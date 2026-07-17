@@ -1,4 +1,24 @@
    local Workspace = game:GetService("Workspace")
+   local Players = game:GetService("Players")
+
+local function IsEnemy(character)
+	local targetPlayer = Players:GetPlayerFromCharacter(character)
+
+	if not targetPlayer then
+		return false
+	end
+
+	-- Ignore teammates
+	if targetPlayer.Team == Players.LocalPlayer.Team then
+		return false
+	end
+	if not IsEnemy(character) then
+		return false
+	end
+
+return checkLineOfSight(cameraPart, character.Head)
+	return true
+end
 
 local function checkLineOfSight(cameraPart, character.Head)
 	local params = RaycastParams.new()
